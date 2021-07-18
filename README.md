@@ -1,6 +1,6 @@
 ## push_swap
 
-This project sorts data on a stack, with a limited set of instructions, using the lowest possible number of actions. To succeed we manipulate various types of algorithms and choose the one (of many) most appropriate solution for an optimized data sorting.
+This project sorts data on a stack (with a second stack to help), with a limited set of instructions, using the lowest possible number of actions. To succeed we manipulate various types of algorithms and choose the one (of many) most appropriate solution for an optimized data sorting.
 
 | operation | description |
 | ------------ | ------------ |
