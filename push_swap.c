@@ -62,9 +62,11 @@ move smaller number to stack a and rotate stack
 check if first number of stack a is the next index of the last number of stack and if it is rotate stack
 
 
-
-
-first sort with bouble sort
+first read argc argv
+deal with string and numbers
+put numbers on stack a
+have a stack b
+sort stack a with bouble sort
 assign index to every number
 look for the best head
 chose the head
@@ -78,10 +80,7 @@ move smaller index number to stack a and rotate to bottom
 repeat last two steps until all numbers move back again to stack a
 rotate stack a until smaller index number is in the first position and the list is sorted
 
-first read argc argv
-deal with string and numbers
-put numbers on stack a
-have a stack b
+
 
 3
 5
@@ -90,16 +89,31 @@ main
 print stack a and b in the terminal
 if (argv[i] == '-v')
 {
-    while (stack_a_list->next || stack_b_list->next)
+    while (stack_a->next || stack_b->next)
     {
-        ft_printf("%d\t%d", stack_list.a.number, stack_b_list.number);
-        stack_a_list++;
-        stack_b_list++;
+        ft_printf("%d\t%d", stack.a.number, stack_b.number);
+        stack_a++;
+        stack_b++;
     }
     ft_printf("_\t_\na\tb");
 }
-
 _______________________________________________________________________________
+
+static int  read_args(int *argc, char **argv)
+{
+    while (argv[i])
+    {
+        if (ft_isdigit(argv[i]))
+        {
+            stack_a->next = argv[i];
+            stack_a++;
+		    i++;
+            argc--;
+        }
+        else
+            return (0);
+    }
+}
 
 static int  check_string(char *string)
 {
@@ -121,7 +135,7 @@ static char	**check_string(int *argc, char **argv)
 	if (!(argv[0][0]))
 		exit(0);
 	argv = ft_split(argv[0], ' ');
-	while (argv[i] != NULL)
+	while (argv[i])
     {
         if (ft_isdigit(argv[i]))
 		    i++;
@@ -140,4 +154,34 @@ int main(int argc, char **argv)
 	argc--;
 	if (argc == 1)
 		argv = check_string(&argc, argv);
+    else
+        read_args(&argc, argv);
+}
+
+
+_______________________________________________________________________________
+
+bouble sort
+
+n = number of elements
+
+while (i < n)
+{
+    scanf("%d", &array[i]);
+    i++;
+}
+
+while (i < n - 1)
+{
+    while (d < n - i - 1)
+    {
+        if (array[d] > array[d+1]) // For decreasing order use '<' instead of '>'
+        {
+            temp       = array[d];
+            array[d]   = array[d+1];
+            array[d+1] = temp;
+        }
+        d++;
+    }
+    i++;
 }
