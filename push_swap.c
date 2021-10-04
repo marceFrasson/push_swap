@@ -6,9 +6,11 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 15:53:03 by marce             #+#    #+#             */
-/*   Updated: 2021/09/28 11:52:16 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/10/04 18:04:26 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 sorting algorithm
 
@@ -64,8 +66,10 @@ check if first number of stack a is the next index of the last number of stack a
 
 first read argc argv
 deal with string and numbers
-put numbers on stack a
+check if number is repeated
+put numbers on stack a (atoi)
 have a stack b
+
 sort stack a with bouble sort
 assign index to every number
 look for the best head
@@ -97,21 +101,43 @@ if (argv[i] == '-v')
     }
     ft_printf("_\t_\na\tb");
 }
+
 _______________________________________________________________________________
 
-static int  read_args(int *argc, char **argv)
+typedef struct s_stck
+{
+    int index;
+    int head;
+    int number;
+    struct s_stack *next;
+}              t_stck;
+_______________________________________________________________________________
+
+void    init_stacks(t_stck stack_a, t_stck stack_b)
+{
+    stack_a.index = 0;
+    stack_a.head = 0;
+    stack_a.number = 0;
+    stack_a.next = NULL;
+    stack_b.index = 0;
+    stack_b.head = 0;
+    stack_b.number = 0;
+    stack_b.next = NULL;
+}
+_______________________________________________________________________________
+
+static int  read_args(char **argv, t_stck stack_a)
 {
     while (argv[i])
     {
         if (ft_isdigit(argv[i]))
         {
-            stack_a->next = argv[i];
+            stack_a.number = ft_atoi(argv[i]);
             stack_a++;
 		    i++;
-            argc--;
         }
         else
-            return (0);
+            return (0); // error: only numbers allowed
     }
 }
 
@@ -138,7 +164,11 @@ static char	**check_string(int *argc, char **argv)
 	while (argv[i])
     {
         if (ft_isdigit(argv[i]))
+        {
+            stack_a.number = ft_atoi(argv[i]);
+            stack_a++;
 		    i++;
+        }
         else
             return (NULL);
     }
@@ -148,14 +178,19 @@ static char	**check_string(int *argc, char **argv)
 
 int main(int argc, char **argv)
 {
-    if (argc == 1)
-		return (0);
-	argv = &argv[1];
-	argc--;
-	if (argc == 1)
-		argv = check_string(&argc, argv);
-    else
-        read_args(&argc, argv);
+        t_stck stack_a;
+        t_stck stack_b;
+
+        init_stacks(&stack_a, &stack_b);
+        if (argc == 1)
+            return (0); // error too few arguments
+        argv = &argv[1];
+        argc--;
+        if (argc == 1)
+            argv = check_string(&argc, argv);
+        else
+            read_args(argv, stack_a);
+    check_repeated()
 }
 
 
@@ -165,23 +200,23 @@ bouble sort
 
 n = number of elements
 
-while (i < n)
+while (stack_a)
 {
-    scanf("%d", &array[i]);
-    i++;
+    count++;
+    stack_a++;
 }
 
-while (i < n - 1)
+while (i < count - 1)
 {
-    while (d < n - i - 1)
+    while (j < count - i - 1)
     {
-        if (array[d] > array[d+1]) // For decreasing order use '<' instead of '>'
+        if (array[j] > array[j+1]) // For decreasing order use '<' instead of '>'
         {
-            temp       = array[d];
-            array[d]   = array[d+1];
-            array[d+1] = temp;
+            temp       = array[j];
+            array[j]   = array[j+1];
+            array[j+1] = temp;
         }
-        d++;
+        j++;
     }
     i++;
 }
