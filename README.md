@@ -20,5 +20,5 @@ I'm implementing an algorithm inspired by [Vitoria Galli](https://github.com/vsc
 
 ## checker
 
-* [push_swap checker for macOS](https://projects.intra.42.fr/uploads/document/document/4148/checker_Mac)
-* [push_swap checker for linux](https://projects.intra.42.fr/uploads/document/document/4149/checker_linux)
+* [push_swap checker for macOS](https://projects.intra.42.fr/uploads/document/document/5299/checker_Mac)
+* [push_swap checker for linux](https://projects.intra.42.fr/uploads/document/document/5300/checker_linux)
