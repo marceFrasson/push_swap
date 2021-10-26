@@ -5,152 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/15 15:53:03 by marce             #+#    #+#             */
-/*   Updated: 2021/10/04 18:04:26 by mfrasson         ###   ########.fr       */
+/*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
+/*   Updated: 2021/10/23 15:20:03 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "push_swap.h"
+#include <stdio.h>
 
-sorting algorithm
-
-movements
-    sa
-    sb
-    ss
-    pa
-    pb
-    ra
-    rb
-    rr
-    rra
-    rrb
-    rrr
-
-input sequence
-
-sort
-
-sorted sequence
-
-first check if first and last values are bigger or smallest
-
-pass them to stack b
-
-check if first half...
-
-
-
-
-given two stacks, one with random numbers and another empty
-
-first thing -> receive input ./push_swap "8 4 0 1 5 9 10"
-
-int main(int argc, char **argv)
+static int	init_stacks(int n, t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 {
-    check_args
-    check_string
-
+	stack_a->n = n;
+	stack_a->array = malloc(n * sizeof(int));
+	stack_a->index = malloc(n * sizeof(int));
+	if (!(stack_a->array))
+		return (1);
+	if (!(stack_a->index))
+		return (1);
+	stack_b->n = 0;
+	stack_b->index = malloc(n * sizeof(int));
+	if (!(stack_b->index))
+	{
+		free(stack_b->index);
+		return (1);
+	}
+	return (0);
 }
 
-first sort with bouble sort
-assign index to every number
-chose head to stay at a stack
-move smaller numbers to stack b
-in stack b check first and last numbers
-if first or last number is the smaller number move it to stack b
-if not smaller number rotate list till find it
-move smaller number to stack a and rotate stack
-check if first number of stack a is the next index of the last number of stack and if it is rotate stack
-
-
-first read argc argv
-deal with string and numbers
-check if number is repeated
-put numbers on stack a (atoi)
-have a stack b
-
-sort stack a with bouble sort
-assign index to every number
-look for the best head
-chose the head
-move numbers to stack b until reach head
-rotate stack a so head goes to bottom
-move smaller then head numbers to stack b while moving larger numbers to bottom
-when all smaller numbers are at stack b look the first and second half os numbers looking for the smaller index number
-if it is in the first half rotate stack until it goes to the first place
-if it is in the second half reverse rotate stack until it goes to the fisrt place
-move smaller index number to stack a and rotate to bottom
-repeat last two steps until all numbers move back again to stack a
-rotate stack a until smaller index number is in the first position and the list is sorted
-
-
-
-3
-5
-main
-
-print stack a and b in the terminal
-if (argv[i] == '-v')
+static int	check_int(char **argv, int i, t_stack *stack_a)
 {
-    while (stack_a->next || stack_b->next)
-    {
-        ft_printf("%d\t%d", stack.a.number, stack_b.number);
-        stack_a++;
-        stack_b++;
-    }
-    ft_printf("_\t_\na\tb");
-}
+	int		j;
+	double	number;
 
-_______________________________________________________________________________
-
-typedef struct s_stck
-{
-    int index;
-    int head;
-    int number;
-    struct s_stack *next;
-}              t_stck;
-_______________________________________________________________________________
-
-void    init_stacks(t_stck stack_a, t_stck stack_b)
-{
-    stack_a.index = 0;
-    stack_a.head = 0;
-    stack_a.number = 0;
-    stack_a.next = NULL;
-    stack_b.index = 0;
-    stack_b.head = 0;
-    stack_b.number = 0;
-    stack_b.next = NULL;
-}
-_______________________________________________________________________________
-
-static int  read_args(char **argv, t_stck stack_a)
-{
-    while (argv[i])
-    {
-        if (ft_isdigit(argv[i]))
-        {
-            stack_a.number = ft_atoi(argv[i]);
-            stack_a++;
-		    i++;
-        }
-        else
-            return (0); // error: only numbers allowed
-    }
-}
-
-static int  check_string(char *string)
-{
-    while (*string)
-    {
-        if (ft_isdigit(*string))
-            string++;
-        else
-            return (0);
-    }
-    return (1);
+	j = 0;
+	if (argv[i][j] == '-')
+	{
+		j++;
+		if (!argv[i][j])
+			return (0);
+	}
+	while (argv[i][j])
+	{
+		if (!(ft_isdigit(argv[i][j])))
+		{
+			error_message(2); // error: not digit
+			exit(0);
+		}
+		j++;
+	}
+	number = ft_atoi(argv[i]);
+	if (number > INT_MAX || number < INT_MIN)
+		return (0);
+	stack_a->array[i] = (int)number;
+	return (1);
 }
 
 static char	**check_string(int *argc, char **argv)
@@ -161,62 +68,61 @@ static char	**check_string(int *argc, char **argv)
 	if (!(argv[0][0]))
 		exit(0);
 	argv = ft_split(argv[0], ' ');
-	while (argv[i])
-    {
-        if (ft_isdigit(argv[i]))
-        {
-            stack_a.number = ft_atoi(argv[i]);
-            stack_a++;
-		    i++;
-        }
-        else
-            return (NULL);
-    }
+	while (argv[i] != NULL)
+		i++;
 	*argc = i;
 	return (argv);
 }
 
-int main(int argc, char **argv)
+static void	check_args(int argc, char **argv, t_stack *stack_a)
 {
-        t_stck stack_a;
-        t_stck stack_b;
+	int	i;
 
-        init_stacks(&stack_a, &stack_b);
-        if (argc == 1)
-            return (0); // error too few arguments
-        argv = &argv[1];
-        argc--;
-        if (argc == 1)
-            argv = check_string(&argc, argv);
-        else
-            read_args(argv, stack_a);
-    check_repeated()
+	i = 0;
+	while (i < argc)
+	{
+		check_int(argv, i, stack_a);
+		i++;
+	}
+	if (!check_repeated(stack_a))
+	{
+		error_message(4);
+		exit(0);
+	}
+	if (check_if_sorted(stack_a))
+	{
+		error_message(3);
+		exit(0);
+	}
 }
 
-
-_______________________________________________________________________________
-
-bouble sort
-
-n = number of elements
-
-while (stack_a)
+int	main(int argc, char **argv)
 {
-    count++;
-    stack_a++;
-}
+	t_stack	stack_a;
+	t_stack	stack_b;
+	t_steps	steps;
+	int i;
 
-while (i < count - 1)
-{
-    while (j < count - i - 1)
-    {
-        if (array[j] > array[j+1]) // For decreasing order use '<' instead of '>'
-        {
-            temp       = array[j];
-            array[j]   = array[j+1];
-            array[j+1] = temp;
-        }
-        j++;
-    }
-    i++;
+	i = 0;
+	printf("first\n");
+	if (argc == 1)
+	{
+		error_message(1);
+		exit(2);
+	}
+	init_stacks(argc - 1, &stack_a, &stack_b, &steps);
+	argv = &argv[1];
+	argc--;
+	check_args(argc, argv, &stack_a);
+	sort_index(&stack_a);
+	choose_head(&stack_a);
+	printf("markup head: %i\n", stack_a.markup_head);
+	//first_move(&stack_a, &stack_b, &steps);
+	//rearange_stack_a(&stack_a);
+	//second_move(&stack_a, &stack_b, &steps);
+	printf("middle\n");
+	free(stack_a.array);
+	free(stack_a.index);
+	free(stack_b.index);
+	printf("last\n");
 }
