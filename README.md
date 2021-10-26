@@ -18,7 +18,7 @@ I'm implementing an algorithm inspired by [Vitoria Galli](https://github.com/vsc
 | `rrb` | reverse rotate b - shift down all elements of stack_b by 1. The last element becomes the first one |
 | `rrr` | `rra` and `rrb` at the same time |
 
-## checker
+## checker download
 
 * [push_swap checker for macOS](https://projects.intra.42.fr/uploads/document/document/5299/checker_Mac)
 * [push_swap checker for linux](https://projects.intra.42.fr/uploads/document/document/5300/checker_linux)
