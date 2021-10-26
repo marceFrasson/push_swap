@@ -2,6 +2,8 @@
 
 This project sorts data on a stack (with a second stack to help), with a limited set of instructions, using the lowest possible number of actions. To succeed we manipulate various types of algorithms and choose the one (of many) most appropriate solution for an optimized data sorting.
 
+I'm implementing an algorithm inspired by [Vitoria Galli's](https://github.com/vscabell) [Push Swap](https://github.com/vscabell/push_swap).
+
 | operation | description |
 | ------------ | ------------ |
 | `sa` | swap a - swap the first 2 elements at the top of stack_a |
