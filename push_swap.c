@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/10/23 15:20:03 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/10/27 17:50:26 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,20 @@ static int	init_stacks(int n, t_stack *stack_a, t_stack *stack_b, t_steps *steps
 	stack_a->array = malloc(n * sizeof(int));
 	stack_a->index = malloc(n * sizeof(int));
 	if (!(stack_a->array))
-		return (1);
+		return (0);
 	if (!(stack_a->index))
-		return (1);
+		return (0);
 	stack_b->n = 0;
 	stack_b->index = malloc(n * sizeof(int));
 	if (!(stack_b->index))
 	{
 		free(stack_b->index);
-		return (1);
+		return (0);
 	}
-	return (0);
+	stack_a->to_keep_in_a = malloc(n * sizeof(int));
+	if (!(stack_a->to_keep_in_a))
+		return (0);
+	return (1);
 }
 
 static int	check_int(char **argv, int i, t_stack *stack_a)
@@ -115,12 +118,12 @@ int	main(int argc, char **argv)
 	argc--;
 	check_args(argc, argv, &stack_a);
 	sort_index(&stack_a);
-	choose_head(&stack_a);
+	choose_head(&stack_a, &stack_b, &steps);
+	printf("middle\n");
 	printf("markup head: %i\n", stack_a.markup_head);
 	//first_move(&stack_a, &stack_b, &steps);
 	//rearange_stack_a(&stack_a);
 	//second_move(&stack_a, &stack_b, &steps);
-	printf("middle\n");
 	free(stack_a.array);
 	free(stack_a.index);
 	free(stack_b.index);

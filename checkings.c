@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:41:57 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/10/23 15:20:03 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:14:18 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,36 +95,6 @@ void	sort_index(t_stack *stack_a)
 	while (i < stack_a->n)
 	{
 		printf("index: _ %i _\n", stack_a->index[i]);
-		i++;
-	}
-}
-
-
-
-void	choose_head(t_stack *stack_a)
-{
-	int	temp;
-	int	count;
-	int	i;
-	int	j;
-
-	i = 0;
-	temp = 0;
-	while (i < stack_a->n)
-	{
-		j = i;
-		count = 0;
-		while (j < stack_a->n - 1)
-		{
-			if (stack_a->array[i] > stack_a->array[j])
-				count++;
-			j++;
-		}
-		if (count > temp)
-		{
-			stack_a->markup_head = stack_a->index[i];
-			temp = count;
-		}
 		i++;
 	}
 }

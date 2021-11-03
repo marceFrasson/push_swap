@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:37:35 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/10/24 19:33:12 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:40:11 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_stack
     int *index;
     int markup_head;
     int *to_keep_in_a;
+    int keep_in_a_count;
 	t_steps			*step_list;
 	t_steps			*last_step;
 }              t_stack;
@@ -43,7 +44,7 @@ void    second_move(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 int     check_repeated(t_stack *stack_a);
 int     check_if_sorted(t_stack *stack_a);
 void    sort_index(t_stack *stack_a);
-void    choose_head(t_stack *stack_a);
+void	choose_head(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 
 void    s(t_stack *stack, t_steps *steps, char c);
 void    r(t_stack *stack, t_steps *steps, char c);
@@ -68,6 +69,7 @@ double	ft_atod(const char *nptr);
 int	ft_isdigit(int c);
 int	ft_strncmp(const char *string1, const char *string2, size_t size);
 char	*ft_strdup(const char *str);
+void	ft_bzero(void *str, size_t size);
 
 void    error_message(int error);
 

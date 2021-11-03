@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 22:26:49 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/10/17 23:55:38 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:17:52 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,4 +277,18 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		dst[i] = '\0';
 	}
 	return (ft_strlen(src));
+}
+
+void	ft_bzero(void *str, size_t size)
+{
+	unsigned char		*s;
+	unsigned long int	i;
+
+	i = 0;
+	s = str;
+	while (i < size)
+	{
+		s[i] = '\0';
+		i++;
+	}
 }
