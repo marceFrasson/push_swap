@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:49:10 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/10/18 00:36:09 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/05 12:09:11 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ss(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 {
 	int		temp;
-	t_steps	*new_step;
+	t_steps	*new_step = {0};
 
 	temp = stack_a->index[0];
 	stack_a->index[0] = stack_a->index[1];
@@ -32,11 +32,11 @@ void	rr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 {
 	int		temp;
 	int		i;
-	t_steps	*new_step;
+	t_steps	*new_step = {0};
 
 	i = 0;
 	temp = stack_a->index[0];
-	while (i < stack_a->n)
+	while (i < stack_a->size)
 	{
 		stack_a->index[i] = stack_a->index[i + 1];
 		i++;
@@ -44,7 +44,7 @@ void	rr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 	stack_a->index[i] = temp;
 	i = 0;
 	temp = stack_b->index[0];
-	while (i < stack_b->n)
+	while (i < stack_b->size)
 	{
 		stack_b->index[i] = stack_b->index[i + 1];
 		i++;
@@ -59,13 +59,13 @@ void	rr_(t_stack *stack, t_steps *steps, char c)
 {
 	int		temp;
 	int		i;
-	t_steps	*new_step;
+	t_steps	*new_step = {0};
 
 	i = 0;
-	temp = stack->index[stack->n];
-	while (i < stack->n)
+	temp = stack->index[stack->size];
+	while (i < stack->size)
 	{
-		stack->index[stack->n - i] = stack->index[stack->n - i - 1];
+		stack->index[stack->size - i] = stack->index[stack->size - i - 1];
 		i++;
 	}
 	stack->index[i] = temp;
@@ -77,23 +77,23 @@ void	rr_(t_stack *stack, t_steps *steps, char c)
 	steps = steps->next;
 }
 
-void	rrr(t_stack *stack_a, t_stack *stack_b, t_steps *steps, char c)
+void	rrr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 {
 	int		temp;
 	int		i;
-	t_steps	*new_step;
+	t_steps	*new_step = {0};
 
 	i = 0;
-	temp = stack_a->index[stack_a->n];
-	while (i < stack_a->n)
+	temp = stack_a->index[stack_a->size];
+	while (i < stack_a->size)
 	{
 		stack_a->index[i] = stack_a->index[i + 1];
 		i++;
 	}
 	stack_a->index[i] = temp;
 	i = 0;
-	temp = stack_b->index[stack_b->n];
-	while (i < stack_b->n)
+	temp = stack_b->index[stack_b->size];
+	while (i < stack_b->size)
 	{
 		stack_b->index[i] = stack_b->index[i + 1];
 		i++;

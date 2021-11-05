@@ -17,9 +17,9 @@ void	extend_stack(t_stack *stack)
 	int	i;
 
 	i = 0;
-	while (stack->n > i)
+	while (stack->size > i)
 	{
-		stack->index[stack->n - i + 1] =  stack->index[stack->n - i];
+		stack->index[stack->size - i + 1] =  stack->index[stack->size - i];
 		i++;
 	}
 }
@@ -29,7 +29,7 @@ void	reduce_stack(t_stack *stack)
 	int	i;
 
 	i = 0;
-	while (i < stack->n)
+	while (i < stack->size)
 	{
 		stack->index[i] = stack->index[i + 1];
 		i++;
@@ -41,6 +41,7 @@ void	refactor_steps(t_steps *steps)
 	char	*temp;
 	t_steps	*stemp;
 
+	temp = NULL;
 	stemp = steps;
 	steps = steps->next;
 	ft_strlcpy(temp, steps->command, 3);

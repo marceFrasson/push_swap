@@ -6,12 +6,12 @@
 #    By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/15 10:51:58 by mfrasson          #+#    #+#              #
-#    Updated: 2021/10/15 10:54:43 by mfrasson         ###   ########.fr        #
+#    Updated: 2021/11/05 11:51:04 by mfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC		=	algorithm.c checkings.c moves_I.c moves_II.c push_swap.c /
-			steps.c utils.c
+SRC		=	algorithm.c checkings.c error.c markup_head.c moves_I.c /
+			moves_II.c push_swap.c steps.c utils.c
 
 OBJ		=	${SRC:.c=.o}
 #--------------------------------------//---------------------------------------
@@ -24,8 +24,6 @@ MODULE		=	./libft/libft.a
 
 FLAGS		=	-Wall -Wextra -Werror
 
-MLX_FLAGS	=	-lbsd -lmlx -lXext -lX11 -lm
-
 CC			=	clang
 #--------------------------------------//---------------------------------------
 .c.o:
@@ -34,24 +32,24 @@ CC			=	clang
 all:		$(NAME)
 
 $(MODULE):
-	@make -C libft
+	make -C libft
 
 $(NAME):	$(MODULE) $(OBJ)
-	@$(CC) $(OBJ) $(FLAGS) $(INCLUDE) $(MODULE) $(MLX_FLAGS) -o $(NAME)
-	@echo ""
-	@echo "|            push_swap criado           |"
-	@echo ""
+	$(CC) $(OBJ) $(FLAGS) $(INCLUDE) $(MODULE) $(MLX_FLAGS) -o $(NAME)
+	echo ""
+	echo "|            push_swap criado           |"
+	echo ""
 #--------------------------------------//---------------------------------------
 clean:
-	@rm -rf $(OBJ)
-	@make clean -C libft
+	rm -rf $(OBJ)
+	make clean -C libft
 
 fclean:		clean
-	@rm -rf $(NAME)
-	@make fclean -C libft
-	@echo ""
-	@echo "|           push_swap deletado          |"
-	@echo ""
+	rm -rf $(NAME)
+	make fclean -C libft
+	echo ""
+	echo "|           push_swap deletado          |"
+	echo ""
 #--------------------------------------//---------------------------------------
 
 re:			fclean all

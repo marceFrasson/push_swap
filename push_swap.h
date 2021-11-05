@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:37:35 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/10/26 11:40:11 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:44:06 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_steps
 
 typedef struct s_stack
 {
-    int n;
+    int size;
     int *array;
     int *index;
     int markup_head;
@@ -44,7 +44,8 @@ void    second_move(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 int     check_repeated(t_stack *stack_a);
 int     check_if_sorted(t_stack *stack_a);
 void    sort_index(t_stack *stack_a);
-void	choose_head(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
+//void	choose_head(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
+int	choose_head(t_stack *stack_a);
 
 void    s(t_stack *stack, t_steps *steps, char c);
 void    r(t_stack *stack, t_steps *steps, char c);
@@ -52,7 +53,7 @@ void    p(t_stack *stack_a, t_stack *stack_b, t_steps *steps, char c);
 void    ss(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 void    rr(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 void    rr_(t_stack *stack, t_steps *steps, char c);
-void    rrr(t_stack *stack_a, t_stack *stack_b, t_steps *steps, char c);
+void    rrr(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 
 void    extend_stack(t_stack *stack);
 void    reduce_stack(t_stack *stack);

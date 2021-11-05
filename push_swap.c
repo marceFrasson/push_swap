@@ -6,23 +6,23 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/10/27 17:50:26 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/05 13:56:05 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-static int	init_stacks(int n, t_stack *stack_a, t_stack *stack_b, t_steps *steps)
+static int	init_stacks(int n, t_stack *stack_a, t_stack *stack_b)
 {
-	stack_a->n = n;
+	stack_a->size = n;
 	stack_a->array = malloc(n * sizeof(int));
 	stack_a->index = malloc(n * sizeof(int));
 	if (!(stack_a->array))
 		return (0);
 	if (!(stack_a->index))
 		return (0);
-	stack_b->n = 0;
+	stack_b->size = 0;
 	stack_b->index = malloc(n * sizeof(int));
 	if (!(stack_b->index))
 	{
@@ -63,20 +63,6 @@ static int	check_int(char **argv, int i, t_stack *stack_a)
 	return (1);
 }
 
-static char	**check_string(int *argc, char **argv)
-{
-	int	i;
-
-	i = 0;
-	if (!(argv[0][0]))
-		exit(0);
-	argv = ft_split(argv[0], ' ');
-	while (argv[i] != NULL)
-		i++;
-	*argc = i;
-	return (argv);
-}
-
 static void	check_args(int argc, char **argv, t_stack *stack_a)
 {
 	int	i;
@@ -101,27 +87,34 @@ static void	check_args(int argc, char **argv, t_stack *stack_a)
 
 int	main(int argc, char **argv)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-	t_steps	steps;
+	t_stack	stack_a = {0};
+	t_stack	stack_b = {0};
+	t_steps	steps = {0};
 	int i;
 
-	i = 0;
 	printf("first\n");
 	if (argc == 1)
 	{
 		error_message(1);
 		exit(2);
 	}
-	init_stacks(argc - 1, &stack_a, &stack_b, &steps);
+	init_stacks(argc - 1, &stack_a, &stack_b);
+	printf("stack_a->size : %i\n", stack_a.size);
 	argv = &argv[1];
 	argc--;
 	check_args(argc, argv, &stack_a);
 	sort_index(&stack_a);
-	choose_head(&stack_a, &stack_b, &steps);
+	choose_head(&stack_a);
 	printf("middle\n");
 	printf("markup head: %i\n", stack_a.markup_head);
-	//first_move(&stack_a, &stack_b, &steps);
+	first_move(&stack_a, &stack_b, &steps);
+	printf("stack_a->size : %i\n", stack_a.size);
+	i = 0;
+	while (i <= stack_a.size)
+	{
+		printf("stack_a: %i | stack_b: %i\n", stack_a.index[i], stack_b.index[i]);
+		i++;
+	}
 	//rearange_stack_a(&stack_a);
 	//second_move(&stack_a, &stack_b, &steps);
 	free(stack_a.array);

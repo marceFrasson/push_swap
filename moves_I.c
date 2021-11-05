@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:47:14 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/10/18 00:35:31 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/05 13:55:28 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void    s(t_stack *stack, t_steps *steps, char c)
 {
 	int     temp;
-	t_steps *new_step;
+	t_steps *new_step = {0};
 
 	temp = stack->index[0];
 	stack->index[0] = stack->index[1];
@@ -32,11 +32,11 @@ void    r(t_stack *stack, t_steps *steps, char c)
 {
 	int     temp;
 	int     i;
-	t_steps *new_step;
+	t_steps *new_step = {0};
 
 	i = 0;
 	temp = stack->index[0];
-	while (i < stack->n)
+	while (i < stack->size)
 	{
 		stack->index[i] = stack->index[i + 1];
 		i++;
@@ -52,13 +52,13 @@ void    r(t_stack *stack, t_steps *steps, char c)
 
 void    p(t_stack *stack_a, t_stack *stack_b, t_steps *steps, char c)
 {
-	t_steps *new_step;
+	t_steps *new_step = {0};
 	
 	extend_stack(stack_b);
 	stack_b->index[0] = stack_a->index[0];
 	reduce_stack(stack_a);
-	stack_b->n++;
-	stack_a->n--;
+	stack_b->size++;
+	stack_a->size--;
 	if (c == 'a')
 		steps->command = ft_strdup("pa");
 	else
