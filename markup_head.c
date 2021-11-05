@@ -6,13 +6,13 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 10:54:01 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/05 19:46:19 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/05 19:52:35 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	copy_array(int *source, int **destiny, int size)
+static void	copy_array(int *source, int *destiny, int size)
 {
 	int i;
 	
@@ -90,7 +90,7 @@ int	choose_head(t_stack *stack_a)
 		{
 			temp_head = i;
 			keep_in_a_count = temp_keep_in_a;
-			copy_array(stack_a->to_keep_in_a, &array, keep_in_a_count);
+			copy_array(stack_a->to_keep_in_a, array, keep_in_a_count);
 		}
 		i++;
 	}
