@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/05 13:56:05 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/05 21:51:58 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int	init_stacks(int n, t_stack *stack_a, t_stack *stack_b)
 	if (!(stack_a->to_keep_in_a))
 		return (0);
 	return (1);
+	ft_bzero(stack_b->index, stack_a->size);
 }
 
 static int	check_int(char **argv, int i, t_stack *stack_a)

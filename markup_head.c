@@ -6,13 +6,13 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 10:54:01 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/05 19:52:35 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/05 20:06:22 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	copy_array(int *source, int *destiny, int size)
+static void	copy_array(int *destiny, int *source, int size)
 {
 	int i;
 	
@@ -22,12 +22,6 @@ static void	copy_array(int *source, int *destiny, int size)
 		destiny[i] = source[i];
 		i++;
 	}
-	// i = 0;
-	// while (i < size)
-	// {
-	// 	printf("dest : %i | src : %i\n", destiny[i], source[i]);
-	// 	i++;
-	// }
 }
 
 static int	nodes_to_keep_a(t_stack *stack_a, int i, int *array)
@@ -51,12 +45,6 @@ static int	nodes_to_keep_a(t_stack *stack_a, int i, int *array)
 		}
 		i++;
 	}
-	// i = 0;
-	// while (i < keep_in_a_count)
-	// {
-	// 	printf("to keep array %i : %i\n", i, array[i]);
-	// 	i++;
-	// }
 	return (keep_in_a_count);
 }
 
@@ -81,11 +69,6 @@ int	choose_head(t_stack *stack_a)
 	{
 		temp_keep_in_a = nodes_to_keep_a(stack_a, i, array);		// <- funcao q modifica o array
 		j = 0;
-		while (i < temp_keep_in_a)
-		{
-			printf("to keep array %i : %i\n", i, array[i]);
-			i++;
-		}
 		if (temp_keep_in_a > keep_in_a_count)
 		{
 			temp_head = i;

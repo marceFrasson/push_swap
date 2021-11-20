@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:43:40 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/05 15:11:50 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/05 22:21:17 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,20 @@ void	first_move(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 	{
 		flag = 0;
 		j = 0;
-		while (j < stack_a->size)
+		while (j < stack_a->keep_in_a_count)
 		{
 			if (stack_a->index[i] == stack_a->to_keep_in_a[j])
 			{
 				r(stack_a, steps, 'a');
 				flag = 1;
-				break ;
+				j--;
 			}
 			j++;
 		}
 		if (flag == 0)
 			p(stack_a, stack_b, steps, 'b');
+		else
+			flag = 0;
 		i++;
 	}
 }
