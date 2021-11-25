@@ -4,6 +4,7 @@
         "__string": "c",
         "string": "c",
         "string_view": "c",
-        "iosfwd": "c"
+        "iosfwd": "c",
+        "push_swap.h": "c"
     }
 }

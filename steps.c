@@ -75,3 +75,11 @@ void	substitute_command(t_steps *steps, char *command)
 	if (ft_strncmp(command, "rrr", 2))
 		ft_strlcpy(steps->command, "rrr", 3);
 }
+
+void sort_stack(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
+{
+    // if (stack_a->size <= 5)
+    //     sort_small_stack(stack_a, stack_b, steps);
+    // else
+    radix_sort(stack_a, stack_b, steps);
+}

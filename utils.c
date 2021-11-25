@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 22:26:49 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/10/26 11:17:52 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/24 19:32:00 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	ft_isspace(int c)
 {
 	if (c == ' ' || c == '\f' || c == '\n'
 		|| c == '\r' || c == '\t' || c == '\v')
-		return (1);
+		return (TRUE);
 	else
-		return (0);
+		return (FALSE);
 }
 
 double	ft_atod(const char *nptr)
@@ -65,10 +65,10 @@ int	ft_isdigits(char *c)
 		if (c[i] >= '0' && c[i] <= '9')
 			i++;
 		else
-			return (0);
+			return (FALSE);
 		i++;
 	}
-	return (1);
+	return (TRUE);
 }
 
 int	ft_strlen(const char *str)
@@ -96,7 +96,7 @@ int	ft_strncmp(const char *string1, const char *string2, size_t size)
 			return (str1[i] - str2[i]);
 		i++;
 	}
-	return (0);
+	return (FALSE);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -266,7 +266,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	i = 0;
 	if (!dst || !src)
-		return (0);
+		return (FALSE);
 	if (size > 0)
 	{
 		while (src[i] && i + 1 < size)
@@ -292,3 +292,29 @@ void	ft_bzero(void *str, size_t size)
 		i++;
 	}
 }
+
+// void	ft_lstdelone(t_list *lst, void (*del)(void*))
+// {
+// 	if (!(lst))
+// 		return ;
+// 	del(lst->vol);
+// 	free(lst);
+// 	lst = NULL;
+// }
+
+// void	ft_lstclear(t_list **lst, void (*del)(void*))
+// {
+// 	t_list	*temp1;
+// 	t_list	*temp2;
+
+// 	if (!(*lst))
+// 		return ;
+// 	temp1 = *lst;
+// 	while (temp1)
+// 	{
+// 		temp2 = temp1->next;
+// 		ft_lstdelone(temp1, del);
+// 		temp1 = temp2;
+// 	}
+// 	*lst = NULL;
+// }
