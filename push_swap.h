@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:37:35 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/24 19:31:34 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/25 22:09:06 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void    rr(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 void    rr_(t_stack *stack, t_steps *steps, char c);
 void    rrr(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 
+void    sort_small_stack(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 void	radix_sort(t_stack *stack_a, t_stack *stack_b, t_steps *steps);
 
 void    extend_stack(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:47:14 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/25 21:42:02 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/25 22:33:03 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void    s(t_stack *stack, t_steps *steps, char c)
 		steps->command = ft_strdup("sb");
 	steps->next = new_step;
 	steps = steps->next;
+	printf("i\n");
 }
 
 void    r(t_stack *stack, t_steps *steps, char c)

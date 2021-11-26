@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:41:57 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/25 21:28:59 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/25 22:36:40 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	check_repeated(t_stack *stack_a)
 	int	temp;
 
 	i = 0;
-	while (i <= stack_a->size)
+	while (i < stack_a->size)
 	{
 		temp = stack_a->array[i];
 		j = i + 1;
-		while (j <= stack_a->size)
+		while (j < stack_a->size)
 		{
 			if (temp == stack_a->array[j])
 				return (FALSE); // error: repeated number

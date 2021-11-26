@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:49:10 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/05 12:09:11 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/25 22:33:34 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ss(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 	steps->next = new_step;
 	ft_strlcpy(steps->command, "ss", 2);
 	steps = steps->next;
+	printf("i\n");
 }
 
 void	rr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
@@ -53,6 +54,7 @@ void	rr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 	steps->command = ft_strdup("rr");
 	steps->next = new_step;
 	steps = steps->next;
+	printf("i\n");
 }
 
 void	rr_(t_stack *stack, t_steps *steps, char c)
@@ -75,6 +77,7 @@ void	rr_(t_stack *stack, t_steps *steps, char c)
 		steps->command = ft_strdup("rrb");
 	steps->next = new_step;
 	steps = steps->next;
+	printf("i\n");
 }
 
 void	rrr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
@@ -102,4 +105,5 @@ void	rrr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 	steps->command = ft_strdup("rrr");
 	steps->next = new_step;
 	steps = steps->next;
+	printf("i\n");
 }
