@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 01:14:08 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:35:14 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	check_int(char **argv, int i, t_stack *stack_a)
 	{
 		if (!(ft_isdigit(argv[i][j])))
 		{
-			error_message(2); // error: not digit
+			write(1, "Error\n", 6); // error: not digit
 			exit(FALSE);
 		}
 		j++;
@@ -77,12 +77,12 @@ static void	check_args(int argc, char **argv, t_stack *stack_a)
 	}
 	if (!check_repeated(stack_a))
 	{
-		error_message(4);
+		write(1, "Error\n", 6);
 		exit(FALSE);
 	}
 	if (check_array_sorted(stack_a))
 	{
-		error_message(3);
+		write(1, "Error\n", 6);
 		exit(FALSE);
 	}
 }
@@ -99,11 +99,8 @@ int	main(int argc, char **argv)
 	t_stack	stack_a;
 	t_stack	stack_b;
 
-	if (argc == 1)
-	{
-		error_message(1);
-		exit(2);
-	}
+	if (argc == 1 || argc == 2)
+		exit(FALSE);
 	init_stacks(argc - 1, &stack_a, &stack_b);
 	check_args(argc - 1, argv + 1, &stack_a);
 	sort_index(&stack_a);

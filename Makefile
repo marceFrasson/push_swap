@@ -1,5 +1,5 @@
 #--------------------------------------//---------------------------------------
-SRC		=	checkings.c error.c moves_I.c moves_II.c \
+SRC		=	checkings.c moves_I.c moves_II.c \
 			push_swap.c radix_sort.c small_sort.c steps.c utils.c
 
 OBJ		=	${SRC:.c=.o}

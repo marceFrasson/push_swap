@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 22:07:49 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 01:25:30 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/26 16:42:25 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,25 @@ void    three_sort(t_stack *stack_a, t_stack *stack_b)
 void    five_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
-	int smalles_number;
+	int smallest_number;
 
-	smalles_number = 1;
+	smallest_number = 1;
 	while (stack_a->size > 3)
 	{
 		i = 0;
-		while (stack_a->index[i] != smalles_number)
+		while (stack_a->index[i] != smallest_number)
 			i++;
 		if (i != 0)
 		{
 			if (i > stack_a->size / 2)
-				while (stack_a->index[0] != smalles_number)
+				while (stack_a->index[0] != smallest_number)
 					rr_(stack_a, 'a');
 			else
-				while (stack_a->index[0] != smalles_number)
+				while (stack_a->index[0] != smallest_number)
 					r(stack_a, 'a');
 		}
 		p(stack_a, stack_b, 'b');
-		smalles_number++;
+		smallest_number++;
 	}
 	three_sort(stack_a, stack_b);
 	while (stack_b->size > 0)
