@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 22:07:49 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 01:00:48 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:24:48 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void    three_sort(t_stack *stack_a, t_stack *stack_b)
         return ;
 	if (stack_a->index[0] < stack_a->index[1])
 	{
-		rr(stack_a, stack_b);
+		rr_(stack_a, 'a');
 		if (stack_a->index[0] > stack_a->index[1])
 			s(stack_a, 'a');
 	}
