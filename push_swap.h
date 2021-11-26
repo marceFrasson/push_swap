@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:37:35 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 00:02:25 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:18:57 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void    first_move(t_stack *stack_a, t_stack *stack_b);
 void    second_move(t_stack *stack_a, t_stack *stack_b);
 
 int     check_repeated(t_stack *stack_a);
+int     check_array_sorted(t_stack *stack_a);
 int     check_if_sorted(t_stack *stack_a);
 void    sort_index(t_stack *stack_a);
 void    sort_stack(t_stack *stack_a, t_stack *stack_b);
