@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/24 21:41:54 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/25 21:52:34 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,16 @@ int	main(int argc, char **argv)
 	argc--;
 	check_args(argc, argv, &stack_a);
 	sort_index(&stack_a);
-	printf("middle\n");
 	sort_stack(&stack_a, &stack_b, &steps);
-	printf("%i <- value of stack_a->size\n", stack_a.size);
-	int i = -1;
-	while (++i < 7)
-		printf("%i	%i\n", stack_a.index[i], stack_b.index[i]);
+	// int i = -1;
+	// printf("\nA\n");
+	// while (++i < stack_a.size)
+	// 	printf("%i\n", stack_a.index[i]);
+	// printf("\nB\n");
+	// i = -1;
+	// while (++i < stack_b.size)
+	// 	printf("%i\n", stack_b.index[i]);
+	// printf("\n");
+	// exit(1);
 	free_stacks(&stack_a, &stack_b);
-	printf("last\n");
 }
