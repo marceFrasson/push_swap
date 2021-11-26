@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_II.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:49:10 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/25 22:33:34 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/25 23:25:08 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	rr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 
 	i = 0;
 	temp = stack_a->index[0];
+
 	while (i < stack_a->size)
 	{
 		stack_a->index[i] = stack_a->index[i + 1];
@@ -63,13 +64,10 @@ void	rr_(t_stack *stack, t_steps *steps, char c)
 	int		i;
 	t_steps	*new_step = {0};
 
-	i = 0;
-	temp = stack->index[stack->size];
-	while (i < stack->size)
-	{
-		stack->index[stack->size - i] = stack->index[stack->size - i - 1];
-		i++;
-	}
+	i = stack->size;
+	temp = stack->index[stack->size - 1];
+	while (--i > 0)
+		stack->index[i] = stack->index[i - 1];
 	stack->index[i] = temp;
 	if (c == 'a')
 		steps->command = ft_strdup("rra");
