@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:43:40 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/25 21:53:03 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/26 00:02:27 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static int	most_significant_bit(int largest_number)
 	return (bits);
 }
 
-static void	push_zeros_to_stack_b(t_stack *stack_a, t_stack *stack_b,
-    t_steps *steps, int bits_to_shift)
+static void	push_zeros_to_stack_b(t_stack *stack_a, t_stack *stack_b, int bits_to_shift)
 {
 	int	i;
     int stop;
@@ -38,20 +37,20 @@ static void	push_zeros_to_stack_b(t_stack *stack_a, t_stack *stack_b,
 	while (i < stop)
 	{
 		if (bit_comparison(stack_a->index[0], bits_to_shift) == 0)
-			p(stack_a, stack_b, steps, 'b');
+			p(stack_a, stack_b, 'b');
 		else
-			r(stack_a, steps, 'a');
+			r(stack_a, 'a');
 		i++;
 	}
 }
 
-static void push_zeros_to_stack_a(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
+static void push_zeros_to_stack_a(t_stack *stack_a, t_stack *stack_b)
 {
     while (stack_b->size > 0)
-			p(stack_b, stack_a, steps, 'a');
+			p(stack_b, stack_a, 'a');
 }
 
-void	radix_sort(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
+void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	bits_to_shift;
 	int	cycles;
@@ -60,8 +59,8 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 	cycles = most_significant_bit(stack_a->size);
 	while (bits_to_shift <= cycles)
 	{
-		push_zeros_to_stack_b(stack_a, stack_b, steps, bits_to_shift);
-		push_zeros_to_stack_a(stack_a, stack_b, steps);
+		push_zeros_to_stack_b(stack_a, stack_b, bits_to_shift);
+		push_zeros_to_stack_a(stack_a, stack_b);
 		bits_to_shift++;
         if (check_if_sorted(stack_a))
             break ;

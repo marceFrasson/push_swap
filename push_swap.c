@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/25 23:39:02 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/11/26 00:04:43 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
-	t_steps	steps;
 
 	if (argc == 1)
 	{
@@ -108,16 +107,7 @@ int	main(int argc, char **argv)
 	init_stacks(argc - 1, &stack_a, &stack_b);
 	check_args(argc - 1, argv + 1, &stack_a);
 	sort_index(&stack_a);
-	sort_stack(&stack_a, &stack_b, &steps);
-	int i = -1;
-	printf("\nA\n");
-	while (++i < stack_a.size)
-		printf("%i\n", stack_a.index[i]);
-	printf("\nB\n");
-	i = -1;
-	while (++i < stack_b.size)
-		printf("%i\n", stack_b.index[i]);
-	printf("\n");
+	sort_stack(&stack_a, &stack_b);
 	free_stacks(&stack_a, &stack_b);
 	return (0);
 }

@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   moves_II.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:49:10 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/25 23:25:08 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/11/26 00:02:20 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ss(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
+void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	int		temp;
-	t_steps	*new_step = {0};
 
 	temp = stack_a->index[0];
 	stack_a->index[0] = stack_a->index[1];
@@ -23,17 +22,13 @@ void	ss(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 	temp = stack_b->index[0];
 	stack_b->index[0] = stack_b->index[1];
 	stack_b->index[1] = temp;
-	steps->next = new_step;
-	ft_strlcpy(steps->command, "ss", 2);
-	steps = steps->next;
-	printf("i\n");
+	write(1, "ss\n", 3);
 }
 
-void	rr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
+void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	int		temp;
 	int		i;
-	t_steps	*new_step = {0};
 
 	i = 0;
 	temp = stack_a->index[0];
@@ -52,17 +47,13 @@ void	rr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 		i++;
 	}
 	stack_b->index[i] = temp;
-	steps->command = ft_strdup("rr");
-	steps->next = new_step;
-	steps = steps->next;
-	printf("i\n");
+	write(1, "rr\n", 3);
 }
 
-void	rr_(t_stack *stack, t_steps *steps, char c)
+void	rr_(t_stack *stack, char c)
 {
 	int		temp;
 	int		i;
-	t_steps	*new_step = {0};
 
 	i = stack->size;
 	temp = stack->index[stack->size - 1];
@@ -70,19 +61,15 @@ void	rr_(t_stack *stack, t_steps *steps, char c)
 		stack->index[i] = stack->index[i - 1];
 	stack->index[i] = temp;
 	if (c == 'a')
-		steps->command = ft_strdup("rra");
+		write(1, "rra\n", 4);
 	else
-		steps->command = ft_strdup("rrb");
-	steps->next = new_step;
-	steps = steps->next;
-	printf("i\n");
+		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
+void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	int		temp;
 	int		i;
-	t_steps	*new_step = {0};
 
 	i = 0;
 	temp = stack_a->index[stack_a->size];
@@ -100,8 +87,5 @@ void	rrr(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
 		i++;
 	}
 	stack_b->index[i] = temp;
-	steps->command = ft_strdup("rrr");
-	steps->next = new_step;
-	steps = steps->next;
-	printf("i\n");
+	write(1, "rrr\n", 4);
 }

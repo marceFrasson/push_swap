@@ -36,10 +36,10 @@ void	reduce_stack(t_stack *stack)
 	}
 }
 
-void sort_stack(t_stack *stack_a, t_stack *stack_b, t_steps *steps)
+void sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
     if (stack_a->size <= 5)
-        sort_small_stack(stack_a, stack_b, steps);
+        sort_small_stack(stack_a, stack_b);
     else
-    radix_sort(stack_a, stack_b, steps);
+    radix_sort(stack_a, stack_b);
 }
