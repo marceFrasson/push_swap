@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:41:57 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 00:02:15 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:13:33 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_repeated(t_stack *stack_a)
 	return (TRUE);
 }
 
-int	check_if_sorted(t_stack *stack_a)
+int	check_array_sorted(t_stack *stack_a)
 {
 	int	i;
 
@@ -42,6 +42,20 @@ int	check_if_sorted(t_stack *stack_a)
 	while (i < stack_a->size)
 	{
 		if (stack_a->array[i - 1] > stack_a->array[i])
+			return (FALSE); // not sorted
+		i++;
+	}
+	return (TRUE); // sorted
+}
+
+int	check_if_sorted(t_stack *stack_a)
+{
+	int	i;
+
+	i = 1;
+	while (i < stack_a->size)
+	{
+		if (stack_a->index[i - 1] > stack_a->index[i])
 			return (FALSE); // not sorted
 		i++;
 	}

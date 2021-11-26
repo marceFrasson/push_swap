@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 00:04:43 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:14:08 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	check_args(int argc, char **argv, t_stack *stack_a)
 		error_message(4);
 		exit(FALSE);
 	}
-	if (check_if_sorted(stack_a))
+	if (check_array_sorted(stack_a))
 	{
 		error_message(3);
 		exit(FALSE);

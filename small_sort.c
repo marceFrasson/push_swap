@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 22:07:49 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 00:04:00 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:00:48 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void    five_sort(t_stack *stack_a, t_stack *stack_b)
 		p(stack_a, stack_b, 'b');
 		little_numbe++;
 	}
+	three_sort(stack_a, stack_b);
 	while (stack_b->size > 0)
 		p(stack_b, stack_a, 'a');
 }
