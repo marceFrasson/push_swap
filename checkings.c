@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:41:57 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 01:13:33 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:11:20 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_repeated(t_stack *stack_a)
 		while (j < stack_a->size)
 		{
 			if (temp == stack_a->array[j])
-				return (FALSE); // error: repeated number
+				return (FALSE);
 			j++;
 		}
 		i++;
@@ -38,28 +38,26 @@ int	check_array_sorted(t_stack *stack_a)
 {
 	int	i;
 
-	i = 1;
-	while (i < stack_a->size)
+	i = -1;
+	while (++i < stack_a->size - 1)
 	{
-		if (stack_a->array[i - 1] > stack_a->array[i])
-			return (FALSE); // not sorted
-		i++;
+		if (stack_a->array[i] > stack_a->array[i + 1])
+			return (FALSE);
 	}
-	return (TRUE); // sorted
+	return (TRUE);
 }
 
 int	check_if_sorted(t_stack *stack_a)
 {
 	int	i;
 
-	i = 1;
-	while (i < stack_a->size)
+	i = -1;
+	while (++i < stack_a->size - 1)
 	{
-		if (stack_a->index[i - 1] > stack_a->index[i])
-			return (FALSE); // not sorted
-		i++;
+		if (stack_a->index[i] > stack_a->index[i + 1])
+			return (FALSE);
 	}
-	return (TRUE); // sorted
+	return (TRUE);
 }
 
 void	sort_index(t_stack *stack_a)

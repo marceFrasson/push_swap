@@ -6,19 +6,26 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:37:35 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 01:18:57 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:14:08 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <unistd.h>
-# include <stdlib.h>
+# include <limits.h>
+# include <errno.h>
 # include <stdio.h>
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdint.h>
+# include "../libft/libft.h"
 
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
+// # define INT_MAX 2147483647
+// # define INT_MIN -2147483648
 
 # define FALSE 0
 # define TRUE 1

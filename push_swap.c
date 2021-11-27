@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 01:35:14 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:18:35 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,38 +53,16 @@ static int	check_int(char **argv, int i, t_stack *stack_a)
 	{
 		if (!(ft_isdigit(argv[i][j])))
 		{
-			write(1, "Error\n", 6); // error: not digit
+			write(1, "Error\n", 6);
 			exit(FALSE);
 		}
 		j++;
 	}
-	number = ft_atoi(argv[i]);
+	number = ft_atod(argv[i]);
 	if (number > INT_MAX || number < INT_MIN)
-		return (FALSE);
+		return (FALSE);    
 	stack_a->array[i] = (int)number;
 	return (TRUE);
-}
-
-static void	check_args(int argc, char **argv, t_stack *stack_a)
-{
-	int	i;
-
-	i = 0;
-	while (i < argc)
-	{
-		check_int(argv, i, stack_a);
-		i++;
-	}
-	if (!check_repeated(stack_a))
-	{
-		write(1, "Error\n", 6);
-		exit(FALSE);
-	}
-	if (check_array_sorted(stack_a))
-	{
-		write(1, "Error\n", 6);
-		exit(FALSE);
-	}
 }
 
 static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
@@ -92,6 +70,32 @@ static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 	free(stack_a->array);
 	free(stack_a->index);
 	free(stack_b->index);
+}
+
+static void	check_args(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
+{
+	int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		if (check_int(argv, i, stack_a))
+		    i++;
+        else
+        {
+            write(1, "Error\n", 6);
+            free_stacks(stack_a, stack_b);
+            exit(FALSE);
+        }
+	}
+	if (!check_repeated(stack_a))
+	{
+		write(1, "Error\n", 6);
+        free_stacks(stack_a, stack_b);
+		exit(FALSE);
+	}
+	if (check_array_sorted(stack_a))
+		exit(FALSE);
 }
 
 int	main(int argc, char **argv)
@@ -102,7 +106,7 @@ int	main(int argc, char **argv)
 	if (argc == 1 || argc == 2)
 		exit(FALSE);
 	init_stacks(argc - 1, &stack_a, &stack_b);
-	check_args(argc - 1, argv + 1, &stack_a);
+	check_args(argc - 1, argv + 1, &stack_a, &stack_b);
 	sort_index(&stack_a);
 	sort_stack(&stack_a, &stack_b);
 	free_stacks(&stack_a, &stack_b);
