@@ -6,35 +6,34 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/27 17:18:35 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:32:06 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../includes/push_swap.h"
 
-static int    init_stacks(int n, t_stack *stack_a, t_stack *stack_b)
+static int	init_stacks(int n, t_stack *stack_a, t_stack *stack_b)
 {
-    stack_a->size = n;
-    stack_a->array = malloc(n * sizeof(int) + 1);
-    if (!(stack_a->array))
-        return (FALSE);
-    stack_a->index = malloc(n * sizeof(int) + 1);
-    if (!(stack_a->index))
-    {
-        free(stack_a->array);
-        return (FALSE);
-    }
-    stack_b->size = 0;
-    stack_b->index = malloc(n * sizeof(int) + 1);
-    if (!(stack_b->index))
-    {
-        free(stack_a->array);
-        free(stack_a->index);
-        return (FALSE);
-    }
-    ft_bzero(stack_b->index, stack_a->size);
-    return (TRUE);
+	stack_a->size = n;
+	stack_a->array = malloc(n * sizeof(int) + 1);
+	if (!(stack_a->array))
+		return (FALSE);
+	stack_a->index = malloc(n * sizeof(int) + 1);
+	if (!(stack_a->index))
+	{
+		free(stack_a->array);
+		return (FALSE);
+	}
+	stack_b->size = 0;
+	stack_b->index = malloc(n * sizeof(int) + 1);
+	if (!(stack_b->index))
+	{
+		free(stack_a->array);
+		free(stack_a->index);
+		return (FALSE);
+	}
+	ft_bzero(stack_b->index, stack_a->size);
+	return (TRUE);
 }
 
 static int	check_int(char **argv, int i, t_stack *stack_a)
@@ -60,7 +59,7 @@ static int	check_int(char **argv, int i, t_stack *stack_a)
 	}
 	number = ft_atod(argv[i]);
 	if (number > INT_MAX || number < INT_MIN)
-		return (FALSE);    
+		return (FALSE);
 	stack_a->array[i] = (int)number;
 	return (TRUE);
 }
@@ -72,7 +71,8 @@ static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 	free(stack_b->index);
 }
 
-static void	check_args(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
+static void	check_args(int argc, char **argv,
+	t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 
@@ -80,18 +80,18 @@ static void	check_args(int argc, char **argv, t_stack *stack_a, t_stack *stack_b
 	while (i < argc)
 	{
 		if (check_int(argv, i, stack_a))
-		    i++;
-        else
-        {
-            write(1, "Error\n", 6);
-            free_stacks(stack_a, stack_b);
-            exit(FALSE);
-        }
+			i++;
+		else
+		{
+			write(1, "Error\n", 6);
+			free_stacks(stack_a, stack_b);
+			exit(FALSE);
+		}
 	}
 	if (!check_repeated(stack_a))
 	{
 		write(1, "Error\n", 6);
-        free_stacks(stack_a, stack_b);
+		free_stacks(stack_a, stack_b);
 		exit(FALSE);
 	}
 	if (check_array_sorted(stack_a))

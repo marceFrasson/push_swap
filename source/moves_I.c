@@ -6,15 +6,15 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:47:14 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 00:02:19 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:31:36 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void    s(t_stack *stack, char c)
+void	s(t_stack *stack, char c)
 {
-	int     temp;
+	int	temp;
 
 	temp = stack->index[0];
 	stack->index[0] = stack->index[1];
@@ -25,10 +25,10 @@ void    s(t_stack *stack, char c)
 		write(1, "sb\n", 3);
 }
 
-void    r(t_stack *stack, char c)
+void	r(t_stack *stack, char c)
 {
-	int     temp;
-	int     i;
+	int	temp;
+	int	i;
 
 	i = 0;
 	temp = stack->index[0];
@@ -44,9 +44,8 @@ void    r(t_stack *stack, char c)
 		write(1, "rb\n", 3);
 }
 
-void    p(t_stack *stack_a, t_stack *stack_b, char c)
+void	p(t_stack *stack_a, t_stack *stack_b, char c)
 {
-	
 	extend_stack(stack_b);
 	stack_b->index[0] = stack_a->index[0];
 	reduce_stack(stack_a);

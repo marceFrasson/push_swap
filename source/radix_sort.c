@@ -6,11 +6,11 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:43:40 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 00:02:27 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:32:14 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	bit_comparison(int binary_number, int bits_to_shift)
 {
@@ -27,13 +27,14 @@ static int	most_significant_bit(int largest_number)
 	return (bits);
 }
 
-static void	push_zeros_to_stack_b(t_stack *stack_a, t_stack *stack_b, int bits_to_shift)
+static void	push_zeros_to_stack_b(t_stack *stack_a,
+	t_stack *stack_b, int bits_to_shift)
 {
 	int	i;
-    int stop;
+	int	stop;
 
 	i = 0;
-    stop = stack_a->size;
+	stop = stack_a->size;
 	while (i < stop)
 	{
 		if (bit_comparison(stack_a->index[0], bits_to_shift) == 0)
@@ -44,10 +45,10 @@ static void	push_zeros_to_stack_b(t_stack *stack_a, t_stack *stack_b, int bits_t
 	}
 }
 
-static void push_zeros_to_stack_a(t_stack *stack_a, t_stack *stack_b)
+static void	push_zeros_to_stack_a(t_stack *stack_a, t_stack *stack_b)
 {
-    while (stack_b->size > 0)
-			p(stack_b, stack_a, 'a');
+	while (stack_b->size > 0)
+		p(stack_b, stack_a, 'a');
 }
 
 void	radix_sort(t_stack *stack_a, t_stack *stack_b)
@@ -62,7 +63,7 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 		push_zeros_to_stack_b(stack_a, stack_b, bits_to_shift);
 		push_zeros_to_stack_a(stack_a, stack_b);
 		bits_to_shift++;
-        if (check_if_sorted(stack_a))
-            break ;
+		if (check_if_sorted(stack_a))
+			break ;
 	}
 }

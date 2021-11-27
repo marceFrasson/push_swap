@@ -6,16 +6,16 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 22:07:49 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 16:42:25 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:32:20 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void    three_sort(t_stack *stack_a, t_stack *stack_b)
+void	three_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	if (check_if_sorted(stack_a))
-        return ;
+		return ;
 	if (stack_a->index[0] < stack_a->index[1])
 	{
 		rr_(stack_a, 'a');
@@ -35,10 +35,10 @@ void    three_sort(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void    five_sort(t_stack *stack_a, t_stack *stack_b)
+void	five_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
-	int smallest_number;
+	int	smallest_number;
 
 	smallest_number = 1;
 	while (stack_a->size > 3)
@@ -63,7 +63,7 @@ void    five_sort(t_stack *stack_a, t_stack *stack_b)
 		p(stack_b, stack_a, 'a');
 }
 
-void    sort_small_stack(t_stack *stack_a, t_stack *stack_b)
+void	sort_small_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size == 2)
 		s(stack_a, 'a');

@@ -6,11 +6,11 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:41:57 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/27 17:11:20 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:31:36 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	check_repeated(t_stack *stack_a)
 {

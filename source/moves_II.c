@@ -6,11 +6,11 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:49:10 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/26 00:02:20 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:31:56 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
@@ -32,7 +32,6 @@ void	rr(t_stack *stack_a, t_stack *stack_b)
 
 	i = 0;
 	temp = stack_a->index[0];
-
 	while (i < stack_a->size)
 	{
 		stack_a->index[i] = stack_a->index[i + 1];
