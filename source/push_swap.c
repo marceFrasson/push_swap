@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/11/27 18:32:06 by mfrasson         ###   ########.fr       */
+/*   Updated: 2021/12/02 10:52:30 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static int	init_stacks(int n, t_stack *stack_a, t_stack *stack_b)
 {
 	stack_a->size = n;
-	stack_a->array = malloc(n * sizeof(int) + 1);
+	stack_a->array = malloc((n + 1) * sizeof(int));
 	if (!(stack_a->array))
 		return (FALSE);
-	stack_a->index = malloc(n * sizeof(int) + 1);
+	stack_a->index = malloc((n + 1) * sizeof(int));
 	if (!(stack_a->index))
 	{
 		free(stack_a->array);
 		return (FALSE);
 	}
 	stack_b->size = 0;
-	stack_b->index = malloc(n * sizeof(int) + 1);
+	stack_b->index = malloc((n + 1) * sizeof(int));
 	if (!(stack_b->index))
 	{
 		free(stack_a->array);
