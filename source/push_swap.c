@@ -6,7 +6,7 @@
 /*   By: mfrasson <mfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:39:58 by mfrasson          #+#    #+#             */
-/*   Updated: 2021/12/02 10:52:30 by mfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/27 22:02:04 by mfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 	t_stack	stack_a;
 	t_stack	stack_b;
 
-	if (argc == 1 || argc == 2)
+	if (argc == 1)
 		exit(FALSE);
 	init_stacks(argc - 1, &stack_a, &stack_b);
 	check_args(argc - 1, argv + 1, &stack_a, &stack_b);
